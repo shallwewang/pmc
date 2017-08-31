@@ -1,0 +1,36 @@
+[
+	{
+		"scanType": "0",
+		"tps": "00000185",
+		"mesScanNo": "16",
+		"time": "2017-07-21 11:24:30",
+		"sourceType": "0",
+		"asyn": "0",
+		"positionFlg": "1",
+		"retMsg": "A00",
+		"flag": ""
+	},
+	{
+		"tps": "00000186",
+		"vin": "12309",
+		"orderType": "01",
+		"model": "Sw",
+		"date": "2017-07-21 11:24:30",
+		"sequence": "12",
+		"lineNo": "A"
+	},
+	{
+	    "tps": "00000187",
+		"plantNo": "1800",
+		"vin": "263984",
+		"sheetNo": "A156",
+		"onlineTime": "2017-07-21 11:24:30"
+	},
+	{
+ 		"tps": "00000188",	    
+		"plantNo": "1800",
+		"sheetNo": "A156",
+		"vin": "263984",
+		"shipTime": "2017-07-21 11:24:30"
+	}
+]

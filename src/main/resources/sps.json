@@ -1,0 +1,69 @@
+[
+	{
+		"CSNGA": "GA1000113213",
+		"ISSUESTIME": "20170320161510",
+		"MATERIALNO": "6169SMAFD152000D",
+		"PARTKITNO": "SPS",
+		"PARTS": [
+			{
+				"LAYOUT": "0",
+				"LOCNO": "",
+				"PARTNAMEC": "ECU标签-88KW",
+				"PARTNO": "C00009342",
+				"QTY": "2.0",
+				"ULOCNO": "CC1070R"
+			},
+			{
+				"LAYOUT": "0",
+				"LOCNO": "",
+				"PARTNAMEC": "ECU标签-88KW",
+				"PARTNO": "C00009342",
+				"QTY": "3.0",
+				"ULOCNO": "CC1070R"
+			}
+		],
+		"PLANTNO": "1600",
+		"PRODUCT": "SV61",
+		"REQTIME": "20170320161305",
+		"SCANTIME": "20170320131305",
+		"SHEETNO": "021600SPS170320191",
+		"SHEETSTATUS": "2",
+		"ULOCNO": "CAG010A",
+		"VIN": "LSKG5GC1XGA238126",
+		"WORKSHOPNO": "GA1"
+	},
+	{
+		"CSNGA": "GA1000113213",
+		"ISSUESTIME": "20170320161510",
+		"MATERIALNO": "6169SMAFD152000D",
+		"PARTKITNO": "SPS",
+		"PARTS": [
+			{
+				"LAYOUT": "0",
+				"LOCNO": "",
+				"PARTNAMEC": "ECU标签-88KW",
+				"PARTNO": "C00009342",
+				"QTY": "2.0",
+				"ULOCNO": "CC1070R"
+			},
+			{
+				"LAYOUT": "0",
+				"LOCNO": "",
+				"PARTNAMEC": "ECU标签-88KW",
+				"PARTNO": "C00009342",
+				"QTY": "3.0",
+				"ULOCNO": "CC1070R"
+			}
+		],
+		"PLANTNO": "1600",
+		"PRODUCT": "SV61",
+		"REQTIME": "20170320161305",
+		"SCANTIME": "20170320131305",
+		"SHEETNO": "021600SPS170320191",
+		"SHEETSTATUS": "2",
+		"ULOCNO": "CAG010A",
+		"VIN": "LSKG5GC1XGA238126",
+		"WORKSHOPNO": "GA1"
+	}
+
+]

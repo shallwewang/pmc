@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<!-- 查找最新的schemaLocation 访问 http://www.springframework.org/schema/ -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans   
+        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+
+	<!-- 配置国际化资源文件路径 -->
+	<bean id="messageSource"
+		class="org.springframework.context.support.ResourceBundleMessageSource">
+		<property name="basenames">
+			<!-- 定义消息资源文件的相对路径 -->
+			<list>
+				<!-- 模块国际化定义 -->
+				<value>messages/Common/message</value>
+				<value>messages/Maintenance/message</value>
+				<value>messages/Dict/message</value>
+				<value>messages/Device/message</value>
+				<value>messages/Spares/message</value>
+				<value>messages/SparesInOut/message</value>
+				<value>messages/Doc/message</value>
+			</list>
+		</property>
+		<property name="useCodeAsDefaultMessage" value="true" />
+		<property name="defaultEncoding"><value>UTF-8</value></property>
+		<property name="cacheSeconds" value="10"/>
+	</bean>
+	<!-- 基于Session的本地化解析器 -->
+	<bean id="localeResolver"
+		class="org.springframework.web.servlet.i18n.SessionLocaleResolver">
+		<property name="defaultLocale" value="zh_CN"></property>
+	</bean>
+
+</beans>  

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqls SYSTEM "../../sql-1.0.dtd">
+<sqls class="Plant">
+	<sql comment="工厂列表" id="plant-list">
+		<![CDATA[
+			select t.id,t.changeTime,t.createTime,t.plantCode,t.plantName,t.descrition,u1.userName as changeBy,u2.userName as createBy from pmc_plant t
+			left join platform_user u1 on t.changeby=u1.id
+			left join platform_user u2 on t.createBy=u2.id
+			where 1=1
+			<#if key["plantName"]??>
+			and plantName like :plantName 
+		    </#if>
+			
+			<#if key["plantName"]??>
+			and plantName like :plantName 
+		    </#if>
+		    
+		    <#if key["plantCode"]??>
+		    
+		    and plantCode like :plantCode
+		    </#if>
+			
+			<#if key["sort"]??&&key["order"]??>
+				order by ${key["sort"]} ${key["order"]}
+			</#if>
+		]]>
+	</sql>
+	
+	<sql comment="工厂combotree" id="plant-combotree">
+	  select id,plantName from pmc_plant
+	</sql>
+</sqls>

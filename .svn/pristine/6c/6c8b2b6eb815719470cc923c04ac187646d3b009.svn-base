@@ -1,0 +1,10 @@
+Doc.DocControl=Doc controller
+Doc.FileName=File name
+Doc.Suffix=Suffix
+Doc.FilePath=File path
+Doc.FileSize=File size
+Doc.UploadTime=Upload time
+Doc.Cancel=Cancel
+Doc.Upload=Upload
+Doc.SelectFile=Select file
+Doc.Browse=Browse

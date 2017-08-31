@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqls SYSTEM "../../sql-1.0.dtd">
+<sqls class="TriggerPointDaoDaoImpl">
+	<sql comment="过点信息列表" id="triggerPoint-list">
+		<![CDATA[
+		SELECT * from pmc_trgrpot
+		 where 1=1
+			<#if key["startDate"]?? && key["endDate"]??>
+				and scanTime between :startDate and :endDate
+			</#if>
+			
+			<#if key["startDate"]?? && !key["endDate"]??>
+				and scanTime >:startDate
+			</#if>
+			
+			<#if !key["startDate"]?? && key["endDate"]??>
+				and scanTime <:endDate
+			</#if>
+		]]>
+	</sql>
+	
+</sqls>

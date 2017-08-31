@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqls SYSTEM "../../sql-1.0.dtd">
+<sqls class="Workshop">
+	<sql comment="车间列表" id="workshop-list">
+		<![CDATA[
+			select t.*,p.plantName from pmc_workshop t left join pmc_plant p on
+			t.plantid=p.id  where 1=1
+			<#if key["workshopName"]??>
+			    and workshopName like :workshopName 
+	        </#if>
+			<#if key["workshopCode"]??>
+			    and workshopCode like :workshopCode 
+	        </#if>
+	        
+			<#if key["sort"]??&&key["order"]??>
+				order by ${key["sort"]} ${key["order"]}
+			</#if>
+		]]>
+	</sql>
+	
+	<sql comment="车间combotree" id="workshop-combotree">
+	  select t.id as workshopId,workshopName,p.plantName,p.id as plantId from pmc_workshop t left join pmc_plant p on
+			t.plantid=p.id
+	</sql>
+	
+	<sql comment="" id="workshop-tree">
+	  <![CDATA[
+	  select id as workshopId,workshopName from pmc_workshop where 1=1
+	 
+      <#if key["plant"]??>
+             and plantId like :plant
+      </#if>
+         order by workshopName
+	  ]]>
+	</sql>
+</sqls>

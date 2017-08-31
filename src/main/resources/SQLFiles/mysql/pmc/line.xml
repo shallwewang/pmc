@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqls SYSTEM "../../sql-1.0.dtd">
+<sqls class="Line">
+	<sql comment="产线列表" id="line-list">
+		<![CDATA[
+			select t.* from pmc_line t where 1=1
+			<#if key["lineName"]??>
+			    and lineName like :lineName 
+	        </#if>
+			<#if key["lineCode"]??>
+			    and lineCode like :lineCode 
+	        </#if>
+			<#if key["sort"]??&&key["order"]??>
+				order by ${key["sort"]} ${key["order"]}
+			</#if>
+		]]>
+	</sql>
+	<sql comment="" id="line-combotree">
+		select id,linename from pmc_line
+	</sql>
+
+	<sql comment="" id="line-tree">
+	  <![CDATA[
+	  select id,linename from pmc_line where 1=1
+	 
+	  <#if key["workshop"]??>
+             and workshopId like :workshop
+      </#if>
+      
+      <#if key["plant"]??>
+             and plantId like :plant
+      </#if>
+         
+         order by linename
+	  
+	  ]]>
+	</sql>
+</sqls>

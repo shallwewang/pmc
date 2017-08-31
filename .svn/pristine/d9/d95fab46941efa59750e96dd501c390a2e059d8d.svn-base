@@ -1,0 +1,37 @@
+#System Properties#
+
+#first time to run?
+first_run=true
+
+#set system into debug model,it will display the detail message,otherwise the simple message will be responsed
+debug=false
+
+default_user=administrator
+
+default_user_password=97b02bc3a777ca6189cbcfd0ea09c936
+
+#ture:logging message into db,flase:just print into console
+user_log=true
+
+#ture:logging exception message into db,flase:just print into console
+exception_log=true
+
+#file upload path
+#upload_path=D\:\\devtools\\apache\\apache-tomcat-7.0.62\\webapps\\platform\\upload
+
+upload_path=C\:\\upload\\\
+
+#set runtime system name(windows or linux)
+os=windows
+
+# oracle mysql mssql
+dbType=mysql
+
+#integrated:1,separate:0
+runType=1
+
+#print barcode left position
+barcodeLeft=208
+
+#print label left position
+labelLeft=400

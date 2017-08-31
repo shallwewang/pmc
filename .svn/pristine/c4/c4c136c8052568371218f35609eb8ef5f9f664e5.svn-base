@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqls SYSTEM "../../sql-1.0.dtd">
+<sqls class="TriggerPointDaoDaoImpl">
+	<sql comment="过点信息列表" id="triggerPoint-list">
+		<![CDATA[
+		SELECT * from pmc_trgrpot
+		 where 1=1
+		 
+		]]>
+	</sql>
+	
+</sqls>

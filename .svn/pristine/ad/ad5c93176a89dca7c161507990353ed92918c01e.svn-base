@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:amq="http://activemq.apache.org/schema/core"
+	xmlns:jms="http://www.springframework.org/schema/jms"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans   
+        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd   
+        http://www.springframework.org/schema/context   
+        http://www.springframework.org/schema/context/spring-context-4.0.xsd
+        http://www.springframework.org/schema/jms
+        http://www.springframework.org/schema/jms/spring-jms-4.0.xsd
+        http://www.springframework.org/schema/tx 
+        http://www.springframework.org/schema/tx/spring-tx.xsd 
+        http://activemq.apache.org/schema/core
+        http://activemq.apache.org/schema/core/activemq-core-5.9.0.xsd">
+
+	<amq:connectionFactory id="amqConnectionFactoryPMC"
+		brokerURL="tcp://139.196.187.107:61626" userName="admin" password="admin" />
+
+	<amq:connectionFactory id="amqConnectionFactoryMES"
+		brokerURL="tcp://localhost:61616" userName="admin" password="admin" />
+	<bean id="connectionFactoryPMC"
+		class="org.springframework.jms.connection.CachingConnectionFactory">
+		<constructor-arg ref="amqConnectionFactoryPMC" />
+		<property name="exceptionListener" ref="jmsExceptionListener" />
+		<property name="sessionCacheSize" value="100" />
+	</bean>
+
+	<bean id="connectionFactoryMES"
+		class="org.springframework.jms.connection.CachingConnectionFactory">
+		<constructor-arg ref="amqConnectionFactoryMES" />
+		<property name="sessionCacheSize" value="100" />
+	</bean>
+
+	<!-- JmsTemplate Definition -->
+	<bean id="jmsPMCTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<constructor-arg ref="connectionFactoryPMC" />
+	</bean>
+
+	<bean id="jmsMESTemplate" class="org.springframework.jms.core.JmsTemplate">
+		<constructor-arg ref="connectionFactoryMES" />
+	</bean>
+
+
+	<!-- PMC 消息队列服务器监听配置 -->
+	<jms:listener-container destination-type="queue"
+		container-type="default" connection-factory="connectionFactoryPMC"
+		acknowledge="auto">
+		<!--WCS -->
+		<jms:listener destination="WCS.PMC.InDispath" ref="inDispathsListener" />
+		<!--WCS -->
+		<jms:listener destination="WCS.PMC.Dispathed" ref="dispathedListener" />
+		<!--PTL -->
+		<jms:listener destination="PTL.PMC.SPSComplete" ref="spsCompleteListener" />
+		<jms:listener destination="PMC.PTL.SPS" ref="ptLSpsListener" />
+	</jms:listener-container>
+
+	<!-- MES 消息队列服务器监听配置 -->
+	<jms:listener-container destination-type="queue"
+		container-type="default" connection-factory="connectionFactoryMES"
+		acknowledge="auto">
+		<!-- SPS料单监听器 -->
+		<jms:listener destination="MES_PMC_SPS_PUBLIC_QUEUE" ref="spsListener" />
+		<!-- 大循环校验监听器 -->
+		<jms:listener destination="MES_PMC_AVI_CHECK_QUEUE" ref="aviCheckListener" />
+		<!-- 车身上线计划监听器 -->
+		<jms:listener destination="MES_PMC_VECH_ONLINE_SEQ_QUEUE" ref="mesPlanListener" />
+	</jms:listener-container>
+</beans>

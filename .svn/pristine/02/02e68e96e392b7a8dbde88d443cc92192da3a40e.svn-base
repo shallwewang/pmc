@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqls SYSTEM "../../sql-1.0.dtd">
+<sqls class="AVICheckDaoImpl">
+	<sql comment="大循环校验信息列表" id="aviCheck-list">
+		<![CDATA[
+		SELECT id,scanType,tps,mesScanNo,time,sourceType,asyn,positionFlg,retMsg,flag from pmc_avicheck
+		 where 1=1
+		 <#if key["tps"]??>
+			and tps like :tps
+		</#if>
+		<#if key["retMsg"]??>
+			and retMsg like :retMsg
+		</#if>
+		 <#if key["startDate"]?? && key["endDate"]??>
+			and time between :startDate and :endDate
+		</#if>
+		
+		<#if key["startDate"]?? && !key["endDate"]??>
+			and time >:startDate
+		</#if>
+		
+		<#if !key["startDate"]?? && key["endDate"]??>
+			and time <:endDate
+		</#if>
+		]]>
+	</sql>
+	
+</sqls>

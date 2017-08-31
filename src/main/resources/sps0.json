@@ -1,0 +1,35 @@
+{
+	"csnGa": "GA1000113213",
+	"issuesTime": "20170320161510",
+	"materialNo": "6169SMAFD152000D",
+	"partkitNo": "sps",
+	"parts": [
+		{
+			"layout": "0",
+			"locNo": "",
+			"partNameC": "ECU标签-88kW",
+			"partNo": "C00009342",
+			"qty": "2.0",
+			"ulocNo": "CC1070R"
+		},
+		{
+			"layout": "0",
+			"locNo": "",
+			"partNameC": "ECU标签-88kW",
+			"partNo": "C00009342",
+			"qty": "3.0",
+			"ulocNo": "CC1070R"
+		}
+	],
+	"plantNo": "1600",
+	"product": "SV61",
+	"reqTime": "20170320161305",
+	"scanTime": "20170320131305",
+	"sheetNo": "021600SPS170320191",
+	"sheetStatus": "2",
+	"ulocNo": "CAG010A",
+	"vin": "LSKG5GC1XGA238126",
+	"workshopNo": "GA1"
+}
+
+

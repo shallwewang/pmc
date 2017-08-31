@@ -1,0 +1,94 @@
+<!--
+	作者:shallwe_wang
+	日期:2017-8-9 11:07:42
+	页面:产线增加或修改页面
+-->
+<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%
+	String path = request.getContextPath();
+	String basePath = request.getScheme() + "://"+ request.getServerName() + ":" + request.getServerPort()+ path + "/";
+%>
+<style type="text/css">
+	//CSS 代码
+</style>
+<script type="text/javascript">
+var workshopUrl = path + 'workshop/tree';
+var plantValue;
+$(function(){
+	$("#plant").combotree({'onChange':function(newValue,oldValue){
+		$.ajax({
+			url : workshopUrl,
+			type : "post",
+			dataType : 'json',
+			data : {
+				"plant" : newValue
+			},
+			success : function(resp) {
+				plantValue=newValue;
+				$("#workshop").combotree('loadData', resp);
+			}
+		});
+		
+	}
+   });
+ }
+);
+</script>
+<div>
+	<!--产线表单-->
+	<form id="lineForm" method="post" ajax="true" action="<%=basePath %>line/${empty line.id ?'add':'edit'}" autocomplete="off" >
+		
+		<input type="hidden" name="id" value="${line.id}" />
+		
+		<table width="100%">
+				<tr>
+					<td class="title">产线名称:</td>
+					<!--产线名称-->
+					<td>
+						<input type="text" id="lineName" name="lineName" value="${line.lineName}"  required="true" class="easyui-textbox" style="width: 240px">
+					</td>
+				</tr>
+				<tr>
+					<td class="title">产线代码:</td>
+					<!--产线代码-->
+					<td>
+						<input type="text" id="lineCode" name="lineCode" value="${line.lineCode}" required="true" class="easyui-textbox" style="width: 240px" >
+					</td>
+				</tr>
+				<tr>
+					<td class="title">产线描述:</td>
+					<!--产线描述-->
+					<td>
+						<input type="text" id="descrition" name="descrition" value="${line.descrition}" class="easyui-textbox" style="width: 240px" >
+					</td>
+				</tr>
+				<tr>
+					<td class="title">工厂:</td>
+					<!--工厂 -->
+					<td>
+						<input type="text" id="plant" class="easyui-combotree" required="true" name="plantId" value="${line.plantId}" 
+						style="width: 240px"
+						data-options="url:'<%=basePath %>plant/combotree',
+									  panelHeight:'80', 
+									  icons: [{iconCls:'icon-clear',handler: function(e){$(e.data.target).textbox('clear');}}]"
+						>
+					</td>
+				</tr>
+				<tr>
+					<td class="title">车间ID:</td>
+					<!--车间ID-->
+					
+					<td>
+						<input type="text" id="workshop" class="easyui-combotree" required="true" name="workshopId" value="${line.workshopId}" 
+						style="width: 240px"
+						data-options="url:'<%=basePath %>workshop/tree',
+									  panelHeight:'80', 
+									  icons: [{iconCls:'icon-clear',handler: function(e){$(e.data.target).textbox('clear');}}]"
+						>
+					</td>
+				</tr>
+				
+			
+		</table>
+	</form>
+</div>

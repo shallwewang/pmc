@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqls SYSTEM "../../sql-1.0.dtd">
+<sqls class="MesPlan">
+	<sql comment="MES计划列表" id="mesPlan-list">
+		<![CDATA[
+			select t.* from pmc_mesPlan t where 1=1
+			
+			<#if key["tps"]??>
+			and tps like :tps
+			</#if>
+			
+		]]>
+	</sql>
+</sqls>
